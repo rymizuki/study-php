@@ -1,0 +1,13 @@
+> docker run -it --rm -v $(pwd):/usr/local/docker php:7.3 php /usr/local/docker/src/index.php
+
+...... --rm までは前回同様。
+
+-v以降で、current directoryを"/usr/local/docker"という名前で、
+作成したコンテナ内にvolumeとして登録。
+
+使用イメージはphp:7.3
+
+実行コマンドは、/usr/local/docker/src/index.php
+→/src/index.phpに、"hello world"と出力するよう記述されている。
+
+
