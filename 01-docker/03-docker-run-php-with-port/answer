@@ -1,0 +1,28 @@
+` docker run `  
+→コンテナを作成＋起動。
+
+` -d `
+→作成したコンテナをbackgroundで起動
+
+` --rm `
+→作成したコンテナを終了時に消去
+
+` --name study-php-server `
+→作成コンテナの名前を"study-php-server"に指定
+
+` -p 3000:3000 `
+→localhostのポート3000と、コンテナのポート3000を接続
+
+` -v $(pwd):/usr/local/docker/app `
+→current directoryを、作成コンテナにvolumeとして複製。
+そのvolumeのpathを` /usr/local/docker/app `以下に指定。
+
+` php:7.3 `
+→イメージの指定
+
+` php -S 0.0.0.0:3000 /usr/local/docker/app/src/index.php `
+→
+
+
+
+
