@@ -1,6 +1,7 @@
 ` docker run `  
 →コンテナを作成＋起動。
 
+//以下　docker run のオプション
 ` -d `
 →作成したコンテナをbackgroundで起動
 
@@ -17,11 +18,15 @@
 →current directoryを、作成コンテナにvolumeとして複製。
 そのvolumeのpathを` /usr/local/docker/app `以下に指定。
 
+//
+
 ` php:7.3 `
 →イメージの指定
 
-` php -S 0.0.0.0:3000 /usr/local/docker/app/src/index.php `
-→
+` php -S 0.0.0.0:3000  /usr/local/docker/app/src/index.php`
+→作成コンテナの_/usr/local/docker/app/src/index.php_
+ファイルをphpで実行。今回は"hello world"と出力。
+_-S_オプションで、任意のインターフェースから、hostのポート3000にアクセス
 
 
 
