@@ -1,0 +1,18 @@
+docker run 
+→コンテナ作成＋起動
+
+-it 
+→ホストのターミナルと、コンテナの、標準入力、出力をつなぐ
+
+--rm
+→コンテナ終了時にコンテナ削除
+
+-v $(pwd):/usr/local/docker
+→current directory以下のファイル、ディレクトリをvolume化。それを、
+コンテナ内に_/usr/local/docker_として保存。
+
+php /usr/local/docker/src/index.php
+→phpで指定コマンド実行。_/usr/local/docker/src/index.php_に記述している
+コマンドを指定。
+
+
