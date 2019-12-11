@@ -1,0 +1,45 @@
+docker run 
+→コンテナ作成＋起動
+
+//run のオプション
+
+-d
+→バックグラウンドでコンテナを持続的に起動
+
+--rm
+→コンテナを終了後削除
+
+--name mysql-study
+→コンテナ名を_mysql-study_に指定。
+
+-p 3906:3906
+→localのport3906とコンテナのport3906をつなぐ
+
+//
+
+mysql:5.7
+→使用イメージを指定
+
+-e 
+環境変数指定。
+
+
+//環境変数自体の説明
+
+MYSQL_ROOT_PASSWORD=root
+→mysqlのrootのパスワードを指定
+
+
+MYSQL_DATABASE=study 
+→image起動時に使用するデータベースの指定
+
+-e MYSQL_USER=study_dev 
+→root以外にmysqlを使用するuserを追加、かつuser名を指定。
+
+-e MYSQL_PASSWORD=study_pass
+→上で追加したuser用のパスワードを指定。
+
+//
+
+
+
