@@ -7,9 +7,10 @@
 今後特にそのコンテナを起動、使用するつもりがないので、コンテナを自動消去する。
 
 -v
-→コンテナに依存しない形で指定したdir,fileをvolumeとして保存できるので、
-保存できるので、指定したディレクトリ、ファイルを別コンテナでも使うときなどに使う。
-あと、そのvolumeをDockerFileに記述しておくと、DockerFileからコンテナを
-buildするときに、自動的にそのvolumeに含まれるfile,dirを
-コンテナ内に形成できる。
+→コンテナに依存しない形で指定したdir,fileをvolumeとして保存でき、別のコンテナ
+と共有できる。
+あと、そのvolume-containerをDockerFileに記述しておくと、
+DockerFileからコンテナをbuildするときに、自動的にその
+volume-containerに含まれるfile,dirをコンテナ内に形成できる。
+
 
