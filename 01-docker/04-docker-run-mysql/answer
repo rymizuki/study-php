@@ -31,7 +31,7 @@ MYSQL_ROOT_PASSWORD=root
 
 
 MYSQL_DATABASE=study 
-→image起動時に使用するデータベースの指定
+→image起動時に使用するデータベース名の指定
 
 -e MYSQL_USER=study_dev 
 →root以外にmysqlを使用するuserを追加、かつuser名を指定。
@@ -40,6 +40,25 @@ MYSQL_DATABASE=study
 →上で追加したuser用のパスワードを指定。
 
 //
+
+
+
+docker exec -it mysql-study
+→mysql-studyコンテナに接続。
+ -itオプションで、localのターミナルとコンテナの標準入出力を接続
+
+
+
+mysql -uroot -p study
+→mysqlにrootユーザーとしてログイン。
+-p　でパスワード入力を行う宣言。パスワードは、docker run -eで指定したもの。
+使用dbはstudy
+
+
+mysql -ustudy_dev -p study
+→mysqlに"study_dev"ユーザーとしてログイン。
+-pは上記同様。
+使用dbはstudy
 
 
 
