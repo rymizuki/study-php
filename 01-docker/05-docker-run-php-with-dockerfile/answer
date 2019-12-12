@@ -10,9 +10,9 @@ WORKDIR /usr/local/docker/app
 
 
 COPY ./src/ /usr/local/docker/app/src/
-→ホストの指定dirを、コンテナ内の指定dirとして複製する。
+→ホストの指定dirを、コンテナ内に指定dirとして複製する。
 今回は、ホストの、current dirctory内の"src" dir以下を、
-コンテナ内の"/usr/local/docker/app/src/"として複製。
+コンテナ内に"/usr/local/docker/app/src/"として複製。
 
 　
 EXPOSE 3000
@@ -21,7 +21,7 @@ EXPOSE 3000
 
 CMD php -S 0.0.0.0:3000 /usr/local/docker/app/src/index.php
 →run時に実行するコマンドを指定
-今回はphpをserverで実行 
+今回はphpを実行 
 オプション_-S 0.0.0.0:3000_　 で任意のインターフェースでポート3000に接続。
 実行するphpコマンドは、"/usr/local/docker/app/src/index.php"に記述
 されているphpコマンド。
@@ -62,7 +62,7 @@ docker ps
 curl http://localhost:3000
 →localhost:3000にgetリクエストを投げる
 今回は、DockerfileのCMDでの指定により、コンテナ内のindex.phpの実行結果が
-、コンテナのポート3000に出力される。そして、_run_時にhostのポート3000と
+、コンテナのポート3000を通して出力される。そして、_run_時にhostのポート3000と
 コンテナのポート3000を接続した。
 これらにより、localhost:3000にindex.phpの実行結果が、返ってくる。
 
