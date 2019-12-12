@@ -1,0 +1,74 @@
+//Dockerfileの解釈//
+
+FROM php:7.3
+→ベースイメージを指定、今回はphp:7.3
+
+
+WORKDIR /usr/local/docker/app
+→Dockerfileで指定したコマンドを、コンテナのどこのdirで行うのかを指定。
+試しにコンテナに接続してみたら、作業dirがはじめからここになっていた。
+
+
+COPY ./src/ /usr/local/docker/app/src/
+→ホストの指定dirを、コンテナ内の指定dirとして複製する。
+今回は、ホストの、current dirctory内の"src" dir以下を、
+コンテナ内の"/usr/local/docker/app/src/"として複製。
+
+　
+EXPOSE 3000
+→コンテナのポート3000を開放
+
+
+CMD php -S 0.0.0.0:3000 /usr/local/docker/app/src/index.php
+→run時に実行するコマンドを指定
+今回はphpをserverで実行 
+オプション_-S 0.0.0.0:3000_　 で任意のインターフェースでポート3000に接続。
+実行するphpコマンドは、"/usr/local/docker/app/src/index.php"に記述
+されているphpコマンド。
+
+//
+
+
+
+docker build -t study-php-05 .
+→Dockerfileからimageを作成
+_-t_ オプションでimage名を指定することを宣言
+image名は"study-php-05"
+最後に、Dockerfileが存在するdirを指定。今回はcurrent dirctory
+
+
+
+docker run -d --rm \
+    --name study-php-server \
+    -p 3000:3000 \
+    study-php-05
+
+→コンテナを作成
+_-d_オプションで、_run_コマンドをbackgroundで実行させる
+_--rm_オプションで、コンテナ停止時にコンテナを消去。
+_--name_オプションでコンテナ名"study-php-server"を指定
+_-p_オプションで、接続するホストのポートとコンテナのポートを指定
+最後に使用imageを指定。今回は"study-php-05"
+
+
+
+
+docker ps
+→稼働しているコンテナを表示。今回は_run_コマンドで作成した"study-php-server"
+が表示される。
+
+
+
+curl http://localhost:3000
+→localhost:3000にgetリクエストを投げる
+今回は、DockerfileのCMDでの指定により、コンテナ内のindex.phpの実行結果が
+、コンテナのポート3000に出力される。そして、_run_時にhostのポート3000と
+コンテナのポート3000を接続した。
+これらにより、localhost:3000にindex.phpの実行結果が、返ってくる。
+
+
+
+docker container stop study-php-server
+→稼働中の"study-php-server"コンテナを停止させる。
+run時に_--rm_オプションをつけたことにより、コンテナが消去される。
+
