@@ -1,2 +1,3 @@
 requires 'Plack';
 requires 'Plack::Request';
+requires 'DDP'
